@@ -1,0 +1,19 @@
+# Disabled: This workflow dispatches to a private repo (cncorp/codel-text)
+# and won't function in the OSS context.
+#
+# name: Notify codel-text of arsenal update
+#
+# on:
+#   push:
+#     branches: [main]
+#
+# jobs:
+#   notify:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: peter-evans/repository-dispatch@v3
+#         with:
+#           token: ${{ secrets.CODEL_TEXT_DISPATCH_TOKEN }}
+#           repository: cncorp/codel-text
+#           event-type: arsenal-updated
+#           client-payload: '{"sha": "${{ github.sha }}", "message": ${{ toJSON(github.event.head_commit.message) }}}'

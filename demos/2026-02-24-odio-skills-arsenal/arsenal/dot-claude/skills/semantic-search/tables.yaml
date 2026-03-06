@@ -1,0 +1,70 @@
+# Semantic Search Table Configuration
+# Define tables with vector embeddings that can be searched semantically.
+#
+# Each table needs:
+#   - name: CLI command name (e.g., "messages" -> "find-messages")
+#   - table: Database table name
+#   - alias: Table alias for SQL queries (must be unique across table + joins)
+#   - description: Help text for the CLI command
+#   - content_column: Column containing the searchable text content
+#   - embedding_column: Column containing the vector embedding
+#   - display_columns: Columns to show in results (supports aliases)
+#   - joins: Optional JOINs to enrich results
+#   - filters: Optional filters (time_column, confidence_column, etc.)
+
+tables:
+  messages:
+    table: message
+    alias: m
+    description: "Search user messages semantically"
+    content_column: content
+    embedding_column: embedding
+    display_columns:
+      - "m.id"
+      - "m.content"
+      - "m.provider_timestamp"
+      - "p.name as sender_name"
+      - "c.type as conversation_type"
+    joins:
+      - "JOIN person_contacts pc ON m.sender_person_contact_id = pc.id"
+      - "JOIN persons p ON pc.person_id = p.id"
+      - "JOIN conversation c ON m.conversation_id = c.id"
+    filters:
+      time_column: provider_timestamp
+      default_hours: 168  # 7 days
+
+  facts:
+    table: person_fact
+    alias: pf
+    description: "Search person facts semantically"
+    content_column: fact
+    embedding_column: embedding
+    display_columns:
+      - "pf.id"
+      - "pf.fact as content"
+      - "pf.type as fact_type"
+      - "pf.confidence"
+      - "pf.created_at"
+      - "p.name as person_name"
+    joins:
+      - "JOIN persons p ON pf.person_id = p.id"
+    filters:
+      confidence_column: confidence
+      default_min_confidence: 0.6
+
+# Example: Adding a new searchable table
+#
+# conversations:
+#   table: conversation
+#   description: "Search conversations by topic"
+#   content_column: summary
+#   embedding_column: summary_embedding
+#   display_columns:
+#     - "c.id"
+#     - "c.summary"
+#     - "c.type"
+#     - "c.created_at"
+#   joins: []
+#   filters:
+#     time_column: created_at
+#     default_hours: 720  # 30 days
