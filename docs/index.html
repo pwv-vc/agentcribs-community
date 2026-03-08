@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentCribs Tear Sheets</title>
+<title>AI Dev Tear Sheets</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -32,7 +32,7 @@
     padding: 48px 0 72px;
   }
   .eyebrow {
-    display: inline-block;
+    display: block;
     margin-bottom: 20px;
     font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
@@ -41,17 +41,21 @@
     color: var(--accent);
   }
   h1 {
-    max-width: 11ch;
+    display: block;
     font-family: "IBM Plex Mono", monospace;
-    font-size: clamp(2.4rem, 7vw, 4.8rem);
+    font-size: clamp(1rem, 2.8vw, 2rem);
     line-height: 0.98;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
   }
   .intro {
-    max-width: 720px;
-    margin-top: 20px;
+    max-width: none;
+    margin-top: 16px;
     color: var(--muted);
-    font-size: 1.05rem;
+    font-size: clamp(0.88rem, 1.65vw, 1rem);
+    white-space: nowrap;
   }
   .grid {
     margin-top: 40px;
@@ -140,15 +144,19 @@
   @media (max-width: 640px) {
     main { padding-top: 36px; }
     .card { padding: 20px; }
+    .intro {
+      font-size: 0.95rem;
+      white-space: normal;
+    }
   }
 </style>
 </head>
 <body>
 <main>
   <div class="eyebrow">AgentCribs</div>
-  <h1>Tear Sheets</h1>
+  <h1>AI Dev Tear Sheets</h1>
   <p class="intro">
-    Static index for published product tear sheets. Each entry links to a standalone HTML page that can be served directly from GitHub Pages.
+    Real 3-minute demos of AI development workflows from AgentCribs community devs.
   </p>
 
   <section class="grid" aria-label="Tear sheets list">
@@ -161,13 +169,14 @@
         <div class="meta">Presenter: Sam Odio</div>
       </div>
       <p class="summary">
-        A tear sheet for Arsenal, focused on enforced Claude workflows, context routing, validation loops, and live product debugging.
+        Solves the manual context-shuttling problem by giving Claude access to logs, prompts, user behavior, infra, and ads so it can turn live product signal into validated fixes and priorities.
       </p>
       <div class="tags" aria-label="Tags">
         <span class="tag">Claude Code</span>
         <span class="tag">Skills</span>
         <span class="tag">Validation</span>
         <span class="tag">LangFuse</span>
+        <span class="tag">Dev Ops</span>
       </div>
       <div class="actions">
         <a class="button primary" href="./tearsheets/arsenal/">Open Tear Sheet</a>
@@ -176,7 +185,7 @@
   </section>
 
   <div class="footer-note">
-    GitHub Pages setup: publish from your branch using the <code>/docs</code> folder. Add future entries under <code>docs/tearsheets/&lt;slug&gt;/index.html</code> and link them from this page.
+    AgentCribs grew out of PWV founder sessions and exists to share real AI development workflows, demo artifacts, and reusable resources from the community. Learn more about <a href="https://pwv.com/about/">PWV</a>, <a href="https://pwv.com/newsletter/">subscribe</a>, or <a href="https://pwv.com/apply/">apply</a>.
   </div>
 </main>
 </body>
