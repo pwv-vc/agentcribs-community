@@ -1,0 +1,72 @@
+version: '3.8'
+
+# Arsenal Docker Compose
+# Orchestrates all skill containers from a single place
+# Run from arsenal directory: docker-compose up -d
+
+services:
+  # Semantic Search - Vector-based code and data discovery
+  semantic-search-db:
+    image: pgvector/pgvector:pg16
+    container_name: arsenal-semantic-search-db
+    environment:
+      POSTGRES_DB: codesearch
+      POSTGRES_USER: codesearch
+      POSTGRES_PASSWORD: codesearch  # pragma: allowlist secret
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - semantic-search-data:/var/lib/postgresql/data
+      - ./dot-claude/skills/semantic-search/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5430:5432"  # Shared service - uses port ending in 0 to avoid conflicts
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U codesearch -d codesearch"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - arsenal
+
+  semantic-search-cli:
+    build:
+      context: ./dot-claude/skills/semantic-search
+      dockerfile: Dockerfile
+    container_name: arsenal-semantic-search-cli
+    depends_on:
+      semantic-search-db:
+        condition: service_healthy
+    environment:
+      # Reads from .env file at arsenal root, or from host environment
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?OPENAI_API_KEY required - set in .env or export in shell}
+      DATABASE_URL: postgresql://codesearch:codesearch@semantic-search-db:5432/codesearch  # pragma: allowlist secret
+      # Production database access (read-only) for semantic search on messages/facts
+      PROD_PGHOST: ${PGHOST:-}
+      PROD_PGPORT: ${PGPORT:-5432}
+      PROD_PGDATABASE: ${PGDATABASE:-}
+      PROD_PGUSER: ${PGUSER:-}
+      PROD_PGPASSWORD: ${PGPASSWORD:-}
+      PROD_PGSSLMODE: ${PGSSLMODE:-require}
+    volumes:
+      # Mount skill source code
+      - ./dot-claude/skills/semantic-search/src:/app/src:ro
+      # Mount tables.yaml configuration
+      - ./dot-claude/skills/semantic-search/tables.yaml:/app/tables.yaml:ro
+      # Mount project root (parent of arsenal directory)
+      - ..:/project:ro
+    working_dir: /project
+    command: tail -f /dev/null
+    networks:
+      - arsenal
+
+  # Add more skills here as services...
+  # playwright-tester:
+  #   ...
+  # twilio-test-caller:
+  #   ...
+
+volumes:
+  semantic-search-data:
+
+networks:
+  arsenal:
+    driver: bridge

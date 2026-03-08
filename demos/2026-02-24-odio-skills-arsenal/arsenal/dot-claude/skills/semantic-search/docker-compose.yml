@@ -1,4 +1,0 @@
-# DEPRECATED: This skill now uses centralized Docker Compose
-# Run from superpowers root instead: cd ../../.. && docker-compose up -d
-
-# This file kept for reference only. Use ../../../docker-compose.yml instead.
