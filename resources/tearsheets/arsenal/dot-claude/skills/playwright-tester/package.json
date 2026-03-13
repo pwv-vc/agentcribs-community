@@ -1,0 +1,27 @@
+{
+  "name": "playwright-tester",
+  "version": "1.0.0",
+  "description": "Playwright testing and automation for Codel Text project - combines simple CLI screenshots with advanced automation capabilities",
+  "author": "Codel Text Team",
+  "main": "run.js",
+  "scripts": {
+    "setup": "npm install && npx playwright install chromium",
+    "install-all-browsers": "npx playwright install chromium firefox webkit"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "browser-testing",
+    "web-automation",
+    "claude-skill",
+    "screenshots",
+    "e2e-testing"
+  ],
+  "dependencies": {
+    "playwright": "^1.48.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "license": "MIT"
+}

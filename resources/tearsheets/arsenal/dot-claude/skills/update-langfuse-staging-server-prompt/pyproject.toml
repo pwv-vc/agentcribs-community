@@ -1,0 +1,11 @@
+[project]
+name = "update-staging-prompt"
+version = "1.0.0"
+description = "Push prompts to Langfuse staging environment"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[dependency-groups]
+dev = []

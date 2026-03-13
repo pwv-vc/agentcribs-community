@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Dev Tear Sheets</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --surface-2: #1f1f1f;
+    --border: #2a2a2a;
+    --accent: #ff6b2b;
+    --accent-2: #ffb347;
+    --text: #e8e8e8;
+    --muted: #969696;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(255, 107, 43, 0.18), transparent 32%),
+      linear-gradient(180deg, #111 0%, var(--bg) 28%, #0a0a0a 100%);
+    color: var(--text);
+    font-family: "IBM Plex Sans", sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    width: min(980px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 48px 0 72px;
+  }
+  .eyebrow {
+    display: block;
+    margin-bottom: 20px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: clamp(1rem, 2.8vw, 2rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .intro {
+    max-width: none;
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: clamp(0.88rem, 1.65vw, 1rem);
+    white-space: nowrap;
+  }
+  .grid {
+    margin-top: 40px;
+    display: grid;
+    gap: 18px;
+  }
+  .card {
+    display: grid;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .card h2 {
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .summary {
+    color: #d4d4d4;
+    max-width: 70ch;
+  }
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--accent-2);
+  }
+  .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--surface);
+  }
+  .button.primary {
+    background: linear-gradient(135deg, var(--accent), #f1842e);
+    border-color: transparent;
+    color: #140b05;
+  }
+  .footer-note {
+    margin-top: 36px;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-2);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  code {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--accent-2);
+  }
+  @media (max-width: 640px) {
+    main { padding-top: 36px; }
+    .card { padding: 20px; }
+    .intro {
+      font-size: 0.95rem;
+      white-space: normal;
+    }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">AgentCribs</div>
+  <h1>AI Dev Tear Sheets</h1>
+  <p class="intro">
+    Real 3-minute demos of AI development workflows from AgentCribs community devs.
+  </p>
+
+  <section class="grid" aria-label="Tear sheets list">
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <h2>Arsenal</h2>
+          <div class="meta">PWV Series • February 25, 2026</div>
+        </div>
+        <div class="meta">Presenter: Sam Odio</div>
+      </div>
+      <p class="summary">
+        Solves the manual context-shuttling problem by giving Claude access to logs, prompts, user behavior, infra, and ads so it can turn live product signal into validated fixes and priorities.
+      </p>
+      <div class="tags" aria-label="Tags">
+        <span class="tag">Claude Code</span>
+        <span class="tag">Skills</span>
+        <span class="tag">Validation</span>
+        <span class="tag">LangFuse</span>
+        <span class="tag">Dev Ops</span>
+      </div>
+      <div class="actions">
+        <a class="button primary" href="./tearsheets/arsenal/">Open Tear Sheet</a>
+      </div>
+    </article>
+  </section>
+
+  <div class="footer-note">
+    AgentCribs grew out of PWV founder sessions and exists to share real AI development workflows, demo artifacts, and reusable resources from the community. Learn more about <a href="https://pwv.com/about/">PWV</a>, <a href="https://pwv.com/newsletter/">subscribe</a>, or <a href="https://pwv.com/apply/">apply</a>.
+  </div>
+</main>
+</body>
+</html>

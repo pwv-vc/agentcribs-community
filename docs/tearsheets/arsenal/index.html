@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsenal — AgentCribs™ Tear Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --accent: #ff6b2b;
+    --accent2: #ffb347;
+    --text: #e8e8e8;
+    --muted: #888;
+    --code-bg: #1c1c1c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 0 0 80px;
+  }
+  .top-nav {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 48px 0;
+  }
+  .top-nav a {
+    color: var(--accent2);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 40px 48px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header-left h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+  .header-left .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .header-meta {
+    text-align: right;
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1.9;
+  }
+  .header-meta a { color: var(--accent2); text-decoration: none; }
+  .top-callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+  }
+  .tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .tag-pill {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: var(--accent2);
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 0 48px; }
+  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: var(--surface);
+    color: var(--text);
+    font-style: italic;
+  }
+  blockquote .attribution {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: normal;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  ul, ol { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  li strong { color: var(--accent2); }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 20px;
+    overflow-x: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 16px 0;
+    color: #ccc;
+  }
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--accent2);
+  }
+  pre code { background: none; padding: 0; color: #ccc; }
+  .env-vars { color: #7ec8a0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  td:first-child code { color: var(--accent); }
+  tr:last-child td { border-bottom: none; }
+  .cmd-item {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 2px;
+    color: var(--accent2);
+    margin: 3px 2px;
+  }
+  .demo-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    margin: 16px 0;
+    border-radius: 2px;
+  }
+  .demo-box .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .demo-box .label.new { color: var(--accent); }
+  .stat {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .stats-row { display: flex; gap: 48px; flex-wrap: wrap; margin: 20px 0; }
+  p { margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  .economics {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    margin-top: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .economics .before { color: #cc8888; }
+  .economics .after { color: #7ec8a0; }
+  .economics .arrow { color: var(--accent); margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a href="../../">← All tear sheets</a>
+</div>
+
+<header>
+  <div class="header-left">
+    <h1>Arsenal</h1>
+    <div class="subtitle">AgentCribs™ Tear Sheet &nbsp;·&nbsp; PWV Series, Feb 25, 2026</div>
+  </div>
+  <div class="header-meta">
+    <div><strong style="color:#e8e8e8">Presenter:</strong> Sam Odio</div>
+    <div><strong style="color:#e8e8e8">Resources:</strong> <a href="https://github.com/pwv-vc/agentcribs-community/tree/srosro/arsenal/resources/tearsheets/arsenal">Bundle</a> · <a href="https://github.com/pwv-vc/agentcribs-community/blob/srosro/arsenal/resources/tearsheets/arsenal/README.md">README</a> · <a href="https://github.com/pwv-vc/agentcribs-community/blob/srosro/arsenal/resources/tearsheets/arsenal/video-transcript.md">Transcript</a></div>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <h2>You'll Want To Use This If...</h2>
+    <div class="top-callout">
+      <p>Solves the manual context-shuttling problem by giving Claude access to logs, prompts, user behavior, infra, and ads so it can turn live product signal into validated fixes and priorities.</p>
+      <p>Arsenal is most useful when Claude needs to reason across product, prompts, infra, and live user signal instead of just the local codebase.</p>
+      <div class="tag-row" aria-label="Tags">
+        <span class="tag-pill">Claude Code</span>
+        <span class="tag-pill">Skills</span>
+        <span class="tag-pill">Validation</span>
+        <span class="tag-pill">LangFuse</span>
+        <span class="tag-pill">Dev Ops</span>
+      </div>
+      <ul>
+        <li><strong>You are rapid prototyping with live users:</strong> product, prompt, and infrastructure changes all need to move in the same loop.</li>
+        <li><strong>User signal should inform dev priorities:</strong> onboarding behavior, traces, feedback, and ad performance need to flow directly into what gets built next.</li>
+        <li><strong>Claude needs real product context:</strong> the answer depends on logs, LangFuse, databases, prompts, code, and operational systems, not just repo files.</li>
+        <li><strong>Validation is the bottleneck:</strong> you want AI to propose and implement changes, but only inside a workflow with checks, diffs, and review gates.</li>
+        <li><strong>Your team is AI-native:</strong> this fits small teams using Claude Code heavily, with infrastructure and product systems defined in code and accessible to the agent.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Problem This Solves</h2>
+    <ul>
+      <li><strong>Skill adherence:</strong> Hash gates force Claude to follow the right skill for every task, eliminating skipped or freelanced workflows.</li>
+      <li><strong>Context shuttle:</strong> Arsenal gives Claude live access to your product's world — logs, DB, prompts, ads, user behavior — so you get answers, not suggestions.</li>
+      <li><strong>Production visibility:</strong> Instead of pasting logs into Claude and getting generic restatements, you can ask what is happening in production right now and get trace-level answers tied to real systems.</li>
+      <li><strong>Feedback loop closure:</strong> User behavior, prompt changes, validation, and product priorities stay in one loop so live signal can drive the next fix or decision.</li>
+    </ul>
+    <blockquote>
+      Before, I was a vehicle to shuttle context from the rest of the world to the language model to the developer. I underestimated the amount of overhead that created.
+      <span class="attribution">— Sam Odio</span>
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>3-Minute Demo</h2>
+    <div class="video-wrapper" style="margin-bottom:20px">
+      <iframe
+        src="https://www.youtube.com/embed/YiDcgyAn-88"
+        title="Arsenal Demo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p style="font-size:13px;color:#888;margin-bottom:16px">What makes the before/after unique is not just better prompting. Arsenal removes the manual context shuttle, so Claude can move from alert or user signal to trace, diagnosis, risk assessment, prompt or code change, and validation in one loop.</p>
+    <div class="demo-box">
+      <div class="label">Old world (plain Claude)</div>
+      <p><em>"Why did this error happen?"</em> → pastes error log</p>
+      <p style="margin-top:8px;color:#cc8888">"One of your LLM calls hit the max completion tokens limit." <span style="font-size:12px;color:#888">(just restated the error)</span></p>
+    </div>
+    <div class="demo-box">
+      <div class="label new">New world (Arsenal)</div>
+      <p>Pinpointed the exact Feb 26 13:17 UTC trace in LangFuse, showed the prompt had 11K tokens vs. a 512 completion limit, gave a risk assessment, proposed a fix, then implemented it — <strong>all in one turn.</strong></p>
+    </div>
+    <blockquote style="margin-top:20px">
+      "50 new users onboarded this week. Zero converted to couples."<br>
+      <span style="color:#ffb347;font-style:normal">"The 0% conversion rate isn't a funnel problem to fix — it's the market telling you what the product is."</span>
+    </blockquote>
+    <p>Claude identified the core strategic problem, proposed two solutions, picked the winner from the data, wrote a spec, and updated all 150 LangFuse prompt templates — <strong>live pivot of the company in one session.</strong></p>
+    <p>Also: generated 273 Facebook ad variants (images + copy) in ~15 minutes.</p>
+  </section>
+
+  <section>
+    <h2>Getting Started</h2>
+    <p style="font-size:13px;color:#888;margin-bottom:12px">
+      Add the installable Arsenal bundle from the
+      <a href="https://github.com/pwv-vc/agentcribs-community/tree/srosro/arsenal/resources/tearsheets/arsenal" style="color:#ffb347">AgentCribs resources page</a>
+      to your project repo as <code>./arsenal</code>, then run:
+    </p>
+    <pre># From your project root
+./arsenal/install.sh
+
+# Optional: start Docker services (semantic search)
+cd arsenal && docker-compose up -d</pre>
+
+    <p style="margin-top:20px"><strong>What install does:</strong></p>
+    <ul style="margin-top:8px">
+      <li>Symlinks <code>arsenal/dot-claude/</code> → <code>.claude/</code> in your project</li>
+      <li>Symlinks <code>arsenal/pre-commit-scripts/</code> and <code>AGENTS.md</code></li>
+      <li>Installs Node.js dependencies (Playwright, etc.)</li>
+      <li>Sets up <code>.env</code> from <code>.env.example</code></li>
+    </ul>
+
+    <p style="margin-top:20px"><strong>Required env vars:</strong></p>
+    <pre><span class="env-vars">OPENAI_API_KEY</span>=...
+<span class="env-vars">LANGFUSE_PUBLIC_KEY</span>=...
+<span class="env-vars">LANGFUSE_SECRET_KEY</span>=...
+<span class="env-vars">LANGFUSE_HOST</span>=...</pre>
+
+    <p style="margin-top:20px"><strong>After install, Claude Code automatically gets:</strong></p>
+    <ul style="margin-top:8px">
+      <li>A bootstrap hook that fires every session: reads <code>getting-started</code> skill before any work begins</li>
+      <li>Skill router that injects skill-checking instructions on every user message</li>
+      <li>Manager review gate that blocks responses until a checklist token is included</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Bundle Details</h2>
+    <p>For install details, workflow inventory, and the full bundle contents, see the <a href="https://github.com/pwv-vc/agentcribs-community/blob/srosro/arsenal/resources/tearsheets/arsenal/README.md" style="color:#ffb347">bundle README</a>.</p>
+  </section>
+
+  <section>
+    <h2>Community Reactions — Feb 25 Session</h2>
+    <div class="stats-row">
+      <div><div class="stat">~12</div><div class="stat-label">attendees coding fully automated</div></div>
+      <div><div class="stat">4</div><div class="stat-label">already using OpenClaw</div></div>
+      <div><div class="stat">3</div><div class="stat-label">using 10+ Claude skills</div></div>
+    </div>
+    <ul>
+      <li>Questions focused on: how validation pipeline was built, whether it's a standalone product, how the 40K CLAUDE.md is organized</li>
+      <li><em>"The validation pipeline concept is a product by itself"</em></li>
+      <li>Strong interest in Arsenal repo access (Sam offered to share privately)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Similar Tools</h2>
+    <table>
+      <tr><th>Tool</th><th>Relationship</th></tr>
+      <tr><td><strong>Superpowers</strong> (Jesse Vincent)</td><td>Arsenal was directly inspired by this. "Assume it's Superpowers."</td></tr>
+      <tr><td><strong>OpenClaw</strong></td><td>4 community members using it; comparable agent orchestration layer</td></tr>
+      <tr><td><strong>LangFuse</strong></td><td>Arsenal wraps LangFuse for prompt debugging/iteration</td></tr>
+      <tr><td><strong>Linear</strong></td><td>Arsenal has Linear integration commands (<code>/create-linear-ticket</code>, <code>/linear-agent</code>)</td></tr>
+      <tr><td><strong>HumanLayer</strong></td><td>Mentioned in tool survey — similar human-in-the-loop concept</td></tr>
+    </table>
+  </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git merge:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(git stash pop:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git apply:*)",
+      "Bash(rm:*)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Bash(aws s3:*)",
+      "Bash(aws ec2:*)",
+      "Bash(aws ecs:*)",
+      "Bash(aws rds:*)",
+      "Bash(aws lambda:*)",
+      "Bash(aws iam:*)",
+      "Bash(aws secretsmanager:*)",
+      "Bash(aws ssm:*)",
+      "Bash(aws kms:*)",
+      "Bash(aws cloudformation:*)",
+      "Bash(aws elasticbeanstalk:*)",
+      "Bash(aws route53:*)",
+      "Bash(aws acm:*)",
+      "Bash(aws sns:*)",
+      "Bash(aws sqs:*)",
+      "Bash(aws dynamodb:*)",
+      "Bash(aws kinesis:*)",
+      "Bash(aws elasticache:*)",
+      "Bash(aws redshift:*)",
+      "Bash(aws eks:*)",
+      "Bash(aws ecr:*)",
+      "Bash(aws apigateway:*)",
+      "Bash(aws cognito:*)",
+      "Bash(aws stepfunctions:*)",
+      "Bash(aws events:*)",
+      "Bash(aws glue:*)",
+      "Bash(aws athena:*)",
+      "Bash(aws emr:*)",
+      "Bash(aws sagemaker:*)",
+      "Bash(aws organizations:*)",
+      "Bash(aws cloudwatch put:*)",
+      "Bash(aws cloudwatch delete:*)",
+      "Bash(terraform:*)",
+      "Bash(pulumi:*)",
+      "Bash(cdk:*)"
+    ],
+    "allowGitWrite": false
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/session_start.py\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/skill-router.py\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/manager_review_gate.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
