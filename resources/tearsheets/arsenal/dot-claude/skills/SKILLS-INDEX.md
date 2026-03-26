@@ -28,6 +28,7 @@ Available skills for this project. The skill-router hook injects this reference 
 | `langfuse-prompt-iterator` | Prompt iteration workflow for debugging and improving Langfuse prompts |
 | `linear-manager` | Create, update, search, and comment on Linear issues |
 | `manager-review` | Quality gate before responding to user |
+| `multi-model-review` | Orchestrate Claude + Codex (or any second model) for adversarial multi-model code review with structured synthesis |
 | `nux-first-week-analyzer` | Analyze new user experience in their first week after onboarding |
 | `playwright-tester` | Capture screenshots and run E2E tests with Playwright |
 | `pm-analyst` | End-to-end PM workflow - from data analysis to Linear tickets |
